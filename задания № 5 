@@ -1,0 +1,19 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    int seed = 5731; // <--initiale seed  (fixed entrance)
+    cout << "===  Von Neumann generator ===\n";
+    cout << "Graine initiale : " << seed << "\n\n";
+
+    for (int i = 1; i <= 10; i++) {
+        long long carre = (long long)seed * seed;    // step 1 : numbre square 
+        int suivant = (carre / 100) % 100000;        // step 2 : extraire 5 chiffres du milieu
+        cout << "Numbre " << setw(2) << i << " : " << setw(5) << setfill('0') << suivant << endl;
+        seed = suivant;                              // step 3 : beecome the new seed 
+    }
+
+    cout << "\n=== end of the generation  ===" << endl;
+    return 0;
+}
