@@ -8,10 +8,10 @@ using namespace std;
     
     int main () {
     int a , b ,c ; 
-    cout<<" entre les trois nombres : 15   45  75 ";
+    cout<<" between the three numbers : 15   45  75 ";
     cin >> a >> b >> c; 
     int result = pgcd(pgcd ( a , b ), c ) ; 
-    cout <<" les plus grandes  divisieur  (pgcd) des trois nombres est : 15 "; 
+    cout <<" the largest divisor of three numbres is   (pgcd) the  three numbres is : 15 "; 
     return 0 ;  
    }
 
