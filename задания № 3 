@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+bool isfrst(long long n) {
+    if (n < 2) return false;
+    for (long long i = 2; i <= sqrt(n); i++)
+        if (n % i == 0) return false;
+    return true;
+}
+
+void fermat(long long n) {
+    if (n % 2 == 0) {
+        cout << "the numbre must be odd !" << endl;
+        return;
+    }
+
+    long long a = ceil(sqrt(n));
+    long long b2 = a * a - n;
+
+    while (sqrt(b2) != floor(sqrt(b2))) {
+        a++;
+        b2 = a * a - n;
+    }
+
+    long long b = sqrt(b2);
+    long long p = a - b;
+    long long q = a + b;
+
+    cout << "given numbr: " << n << endl;
+    cout << "Factorisation (method of Fermat) : " << p << " × " << q << endl;
+    cout << "Analysy of primality :" << endl;
+    cout << p << (isfrst(p) ? " is frst" : "is not frst") << endl;
+    cout << q << (isfrst(q) ? " is frst" : " is not frst") << endl;
+}
+
+int main() {
+    long long n =  5959 ; 
+    fermat(n);
+    return 0;
+}
