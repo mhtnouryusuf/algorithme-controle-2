@@ -1,0 +1,46 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// Fonction du tamis de Sundaram
+vector<int> tamisSundaram(int N) {
+    vector<bool> marque(N + 1, true);
+
+    for (int i = 1; i <= N; i++) {
+        for (int j = i; (i + j + 2 * i * j) <= N; j++) {
+            marque[i + j + 2 * i * j] = false;
+        }
+    }
+
+    vector<int> nombresPremiers;
+    nombresPremiers.push_back(2); 
+
+    for (int i = 1; i <= N; i++) {
+        if (marque[i]) {
+            nombresPremiers.push_back(2 * i + 1);
+        }
+    }
+
+    return nombresPremiers;
+}
+
+int main() { 
+    int N = 50;
+    cout << "=== Exemple d'exécution du Tamis de Sundaram ===" << endl;
+    cout << "Limite choisie N = " << N << endl;
+    cout << "Ce programme va afficher tous les nombres premiers jusqu'à " << 2 * N + 2 << endl;
+    cout << "------------------------------------------------" << endl;
+
+    vector<int> premiers = tamisSundaram(N);
+
+    cout << "Nombres premiers obtenus :" << endl;
+    for (int p : premiers) {
+        cout << p << " ";
+    }
+    cout << endl;
+
+    cout << "------------------------------------------------" << endl;
+    cout << "Fin de l'exécution." << endl;
+
+    return 0;
+}
